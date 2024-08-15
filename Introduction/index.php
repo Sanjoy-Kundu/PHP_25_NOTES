@@ -101,6 +101,93 @@
     <li>Global</li>
     <li>Static</li>
 </ol>
+<br> <br> <br>
+<ul>
+    <li><h4>Local Scope </h4>
+        <ol>
+            <li>
+                <?php 
+                function result(){
+                    $name = "LG Monitor";
+                    $length = 14.4;
+                    $amount = 13000;
+                    $info = "Monitor name ${name}.Monitor Length is ${length}. Total Amount is ${amount}";
+                    echo $info;
+                }
+                result();
+                // echo $name; undifiend we cant access locally
+                ?>
+            </li>
+            <li><?= result() ?></li>
+        </ol>
+        <br>
+    </li>
+    <li>
+        <h4>Global Scope</h4>
+        <ol>
+            <li>Wrong way
+                <?php
+                 $x = 5; // global scope
+
+                 function myTest() {
+                   // using x inside this function will generate an error
+                   return "<p>Variable x inside function is: $x</p>";
+                 }
+                 myTest();
+                 echo $x;
+                ?>
+            </li>
+            <li>
+                Right Way
+                <?php 
+                    $m = "GOOD";
+                    $n = "BOY";
+                    function myTest2(){
+                        GLOBAL $m, $n;
+                        $answer =  "Result is = $m  $n";
+                        echo $answer;
+                    }
+
+                    myTest2();
+                    echo "I am a ${m} man";
+                ?>
+            </li>
+
+            <li>
+                <h4>GLOBAL KEYWORD MATH</h4>
+                <?php 
+                    $e = 10;
+                    $f = 20;
+                    function math(){
+                        $GLOBALS["z"] = $GLOBALS["e"] + $GLOBALS["f"];
+                    }
+                    math();
+                    echo "TOTAL ADDITION IS = $z";
+                ?>
+            </li>
+
+            <br> <br>
+            <li>
+                <h4>Static Variable</h4>
+                <?php 
+                function lastFunction(){
+                    static $o = 0; // declear a fist variable by using static keyword
+                    echo $o;
+                    $o++;
+                }
+                lastFunction();
+                echo "<br/>";
+                lastFunction();
+                echo "<br/>";
+                lastFunction();
+                echo "<br/>";
+                lastFunction();
+                echo "<br/>";
+                ?>
+            </li>
+        </ol>
+    </li>
+</ul>
 
 
 
